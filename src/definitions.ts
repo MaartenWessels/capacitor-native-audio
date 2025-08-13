@@ -180,6 +180,32 @@ export interface AudioPlayerPlugin {
     initialize(params: AudioPlayerDefaultParams): Promise<{ success: boolean }>;
 
     /**
+     * Start native-level tracking of audio playback progress.
+     * Tracks individual seconds of audio that are actually played (not skipped or seeked over).
+     * Useful for analytics, progress tracking, or when JavaScript execution may be limited.
+     *
+     * @since 3.0.0
+     */
+    startBackgroundTracking(params: AudioPlayerDefaultParams & { duration: number }): Promise<void>;
+
+    /**
+     * Stop native-level tracking of audio playback progress.
+     * Call this when you no longer need to track playback seconds natively.
+     *
+     * @since 3.0.0
+     */
+    stopBackgroundTracking(params: AudioPlayerDefaultParams): Promise<void>;
+
+    /**
+     * Retrieve and clear the collected playback progress data.
+     * Returns an array of unique second timestamps that were actually played (excluding skipped content).
+     * The data is automatically cleared after fetching to prevent duplicate reporting.
+     *
+     * @since 3.0.0
+     */
+    fetchBackgroundPlayedSeconds(params: AudioPlayerDefaultParams): Promise<{ seconds: number[] }>;
+
+    /**
      * Change the audio source on an existing audio source (`audioId`).
      *
      * This is useful for changing background music while the primary audio is playing
