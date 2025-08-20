@@ -190,9 +190,9 @@ Should be called after callbacks are registered (e.g. `onAudioReady`).
 startBackgroundTracking(params: AudioPlayerDefaultParams & { duration: number; }) => Promise<void>
 ```
 
-Start native-level tracking of audio playback progress. This tracks individual seconds of audio that are actually played (not skipped or seeked over). Useful for analytics, progress tracking, or when JavaScript execution may be limited.
-
-The tracking intelligently detects and ignores large time jumps (>3 seconds) to avoid counting skipped content as played time.
+Start native-level tracking of audio playback progress.
+Tracks individual seconds of audio that are actually played (not skipped or seeked over).
+Useful for analytics, progress tracking, or when JavaScript execution may be limited.
 
 | Param        | Type                                                                                                  |
 | ------------ | ----------------------------------------------------------------------------------------------------- |
@@ -209,7 +209,8 @@ The tracking intelligently detects and ignores large time jumps (>3 seconds) to 
 stopBackgroundTracking(params: AudioPlayerDefaultParams) => Promise<void>
 ```
 
-Stop native-level tracking of audio playback progress. Call this when you no longer need to track playback seconds natively.
+Stop native-level tracking of audio playback progress.
+Call this when you no longer need to track playback seconds natively.
 
 | Param        | Type                                                                          |
 | ------------ | ----------------------------------------------------------------------------- |
@@ -226,8 +227,8 @@ Stop native-level tracking of audio playback progress. Call this when you no lon
 fetchBackgroundPlayedSeconds(params: AudioPlayerDefaultParams) => Promise<{ seconds: number[]; }>
 ```
 
-Retrieve and clear the collected playback progress data. Returns an array of unique second timestamps that were actually played (excluding skipped content). 
-
+Retrieve and clear the collected playback progress data.
+Returns an array of unique second timestamps that were actually played (excluding skipped content).
 The data is automatically cleared after fetching to prevent duplicate reporting.
 
 | Param        | Type                                                                          |
