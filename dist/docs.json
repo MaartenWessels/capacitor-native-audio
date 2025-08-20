@@ -45,7 +45,7 @@
             "text": "1.0.0"
           }
         ],
-        "docs": "Initialize the audio source. Prepares the audio to be played, buffers and such.\r\n\r\nShould be called after callbacks are registered (e.g. `onAudioReady`).",
+        "docs": "Initialize the audio source. Prepares the audio to be played, buffers and such.\n\nShould be called after callbacks are registered (e.g. `onAudioReady`).",
         "complexTypes": [
           "AudioPlayerDefaultParams"
         ],
@@ -68,7 +68,7 @@
             "text": "3.0.0"
           }
         ],
-        "docs": "Start native-level tracking of audio playback progress.\r\nTracks individual seconds of audio that are actually played (not skipped or seeked over).\r\nUseful for analytics, progress tracking, or when JavaScript execution may be limited.",
+        "docs": "Start native-level tracking of audio playback progress.\nTracks individual seconds of audio that are actually played (not skipped or seeked over).\nUseful for analytics, progress tracking, or when JavaScript execution may be limited.",
         "complexTypes": [
           "AudioPlayerDefaultParams"
         ],
@@ -91,7 +91,7 @@
             "text": "3.0.0"
           }
         ],
-        "docs": "Stop native-level tracking of audio playback progress.\r\nCall this when you no longer need to track playback seconds natively.",
+        "docs": "Stop native-level tracking of audio playback progress.\nCall this when you no longer need to track playback seconds natively.",
         "complexTypes": [
           "AudioPlayerDefaultParams"
         ],
@@ -114,7 +114,7 @@
             "text": "3.0.0"
           }
         ],
-        "docs": "Retrieve and clear the collected playback progress data.\r\nReturns an array of unique second timestamps that were actually played (excluding skipped content).\r\nThe data is automatically cleared after fetching to prevent duplicate reporting.",
+        "docs": "Retrieve and clear the collected playback progress data.\nReturns an array of unique second timestamps that were actually played (excluding skipped content).\nThe data is automatically cleared after fetching to prevent duplicate reporting.",
         "complexTypes": [
           "AudioPlayerDefaultParams"
         ],
@@ -137,7 +137,7 @@
             "text": "1.0.0"
           }
         ],
-        "docs": "Change the audio source on an existing audio source (`audioId`).\r\n\r\nThis is useful for changing background music while the primary audio is playing\r\nor changing the primary audio before it is playing to accommodate different durations\r\nthat a user can choose from.",
+        "docs": "Change the audio source on an existing audio source (`audioId`).\n\nThis is useful for changing background music while the primary audio is playing\nor changing the primary audio before it is playing to accommodate different durations\nthat a user can choose from.",
         "complexTypes": [
           "AudioPlayerDefaultParams"
         ],
@@ -183,7 +183,7 @@
             "text": "2.2.0"
           }
         ],
-        "docs": "Update metadata from Update URL\r\n\r\nThis runs async on the native side. Use the `onMetadataUpdate` listener to get the updated metadata.",
+        "docs": "Update metadata from Update URL\n\nThis runs async on the native side. Use the `onMetadataUpdate` listener to get the updated metadata.",
         "complexTypes": [
           "AudioPlayerDefaultParams"
         ],
@@ -206,7 +206,7 @@
             "text": "1.0.0"
           }
         ],
-        "docs": "Get the duration of the audio source.\r\n\r\nShould be called once the audio is ready (`onAudioReady`).",
+        "docs": "Get the duration of the audio source.\n\nShould be called once the audio is ready (`onAudioReady`).",
         "complexTypes": [
           "AudioPlayerDefaultParams"
         ],
@@ -344,7 +344,7 @@
             "text": "1.0.0"
           }
         ],
-        "docs": "Set the volume of the audio source. Should be a decimal less than or equal to `1.00`.\r\n\r\nThis is useful for background music.",
+        "docs": "Set the volume of the audio source. Should be a decimal less than or equal to `1.00`.\n\nThis is useful for background music.",
         "complexTypes": [
           "AudioPlayerDefaultParams"
         ],
@@ -367,7 +367,7 @@
             "text": "1.0.0"
           }
         ],
-        "docs": "Set the rate for the audio source to be played at.\r\nShould be a decimal. An example being `1` is normal speed, `0.5` being half the speed and `1.5` being 1.5 times faster.",
+        "docs": "Set the rate for the audio source to be played at.\nShould be a decimal. An example being `1` is normal speed, `0.5` being half the speed and `1.5` being 1.5 times faster.",
         "complexTypes": [
           "AudioPlayerDefaultParams"
         ],
@@ -413,7 +413,7 @@
             "text": "1.0.0"
           }
         ],
-        "docs": "Destroy all resources for the audio source.\r\nThe audio source with `useForNotification = true` must be destroyed last.",
+        "docs": "Destroy all resources for the audio source.\nThe audio source with `useForNotification = true` must be destroyed last.",
         "complexTypes": [
           "AudioPlayerDefaultParams"
         ],
@@ -557,7 +557,7 @@
             "text": "1.0.0"
           }
         ],
-        "docs": "Registers a callback for when state of playback for the audio source has changed by external controls.\r\nThis should be used to update your UI when the notification/external controls are used to control the playback.\r\n\r\nOn Android, this also gets fired when your app changes the state (e.g. by calling `play`, `pause` or `stop`)\r\ndue to a limitation of not knowing where the state change came from, either the app or the `MediaSession` (external controls).\r\n\r\nIt may be fixed in the future for Android if a solution is found so don't rely on it when your app itself changes the state.",
+        "docs": "Registers a callback for when state of playback for the audio source has changed by external controls.\nThis should be used to update your UI when the notification/external controls are used to control the playback.\n\nOn Android, this also gets fired when your app changes the state (e.g. by calling `play`, `pause` or `stop`)\ndue to a limitation of not knowing where the state change came from, either the app or the `MediaSession` (external controls).\n\nIt may be fixed in the future for Android if a solution is found so don't rely on it when your app itself changes the state.",
         "complexTypes": [
           "AudioPlayerListenerResult",
           "AudioPlayerListenerParams"
@@ -586,7 +586,7 @@
             "text": "2.2.0"
           }
         ],
-        "docs": "Registers a callback for when metadata updates from a URL.\r\n\r\nIt will return all data from the URL response, not just the required data. So you could have the metadata endpoint return other data that you may need.",
+        "docs": "Registers a callback for when metadata updates from a URL.\n\nIt will return all data from the URL response, not just the required data. So you could have the metadata endpoint return other data that you may need.",
         "complexTypes": [
           "AudioPlayerListenerResult",
           "AudioPlayerListenerParams",
@@ -669,7 +669,7 @@
               "name": "since"
             }
           ],
-          "docs": "Whether to use this audio file for the notification.\r\nThis is considered the primary audio to play.\r\n\r\nIt must be created first and you may only have one at a time.",
+          "docs": "Whether to use this audio file for the notification.\nThis is considered the primary audio to play.\n\nIt must be created first and you may only have one at a time.",
           "complexTypes": [],
           "type": "boolean"
         },
@@ -689,7 +689,7 @@
               "name": "since"
             }
           ],
-          "docs": "A URI for the album art image to display on the Android/iOS notification.\r\n\r\nCan also be an in-app source. Pulls from `android/app/src/assets/public` and `ios/App/App/public`.\r\nIf using [Vite](https://vitejs.dev/guide/assets.html#the-public-directory),\r\nyou would put the image in your `public` folder and the build process will copy to `dist`\r\nwhich in turn will be copied to the Android/iOS assets by Capacitor.\r\n\r\nA PNG is the best option with square dimensions. 1200 x 1200px is a good option.",
+          "docs": "A URI for the album art image to display on the Android/iOS notification.\n\nCan also be an in-app source. Pulls from `android/app/src/assets/public` and `ios/App/App/public`.\nIf using [Vite](https://vitejs.dev/guide/assets.html#the-public-directory),\nyou would put the image in your `public` folder and the build process will copy to `dist`\nwhich in turn will be copied to the Android/iOS assets by Capacitor.\n\nA PNG is the best option with square dimensions. 1200 x 1200px is a good option.",
           "complexTypes": [],
           "type": "string | undefined"
         },
@@ -705,7 +705,7 @@
               "name": "since"
             }
           ],
-          "docs": "Is this audio for background music/audio.\r\n\r\nShould not be `true` when `useForNotification = true`.",
+          "docs": "Is this audio for background music/audio.\n\nShould not be `true` when `useForNotification = true`.",
           "complexTypes": [],
           "type": "boolean | undefined"
         },
@@ -721,7 +721,7 @@
               "name": "since"
             }
           ],
-          "docs": "Whether or not to loop other audio like background music\r\nwhile the primary audio (`useForNotification = true`) is playing.",
+          "docs": "Whether or not to loop other audio like background music\nwhile the primary audio (`useForNotification = true`) is playing.",
           "complexTypes": [],
           "type": "boolean | undefined"
         },
@@ -737,7 +737,7 @@
               "name": "since"
             }
           ],
-          "docs": "Whether or not to show the seek backward button on the OS's notification.\r\nOnly has affect when `useForNotification = true`.",
+          "docs": "Whether or not to show the seek backward button on the OS's notification.\nOnly has affect when `useForNotification = true`.",
           "complexTypes": [],
           "type": "boolean | undefined"
         },
@@ -753,7 +753,7 @@
               "name": "since"
             }
           ],
-          "docs": "Whether or not to show the seek forward button on the OS's notification.\r\nOnly has affect when `useForNotification = true`.",
+          "docs": "Whether or not to show the seek forward button on the OS's notification.\nOnly has affect when `useForNotification = true`.",
           "complexTypes": [],
           "type": "boolean | undefined"
         },
@@ -765,7 +765,7 @@
               "name": "since"
             }
           ],
-          "docs": "The URL to fetch metadata updates at the specified interval. Typically used for a radio stream.\r\nSee the section on [Metadata Updates](#metadata-updates) for more info.\r\nOnly has affect when `useForNotification = true`.",
+          "docs": "The URL to fetch metadata updates at the specified interval. Typically used for a radio stream.\nSee the section on [Metadata Updates](#metadata-updates) for more info.\nOnly has affect when `useForNotification = true`.",
           "complexTypes": [],
           "type": "string | undefined"
         },
