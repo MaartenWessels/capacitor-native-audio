@@ -758,6 +758,38 @@
           "type": "boolean | undefined"
         },
         {
+          "name": "seekBackwardTime",
+          "tags": [
+            {
+              "text": "5",
+              "name": "default"
+            },
+            {
+              "text": "2.3.0",
+              "name": "since"
+            }
+          ],
+          "docs": "Time to seek backward in seconds on the OS's notification.\nOnly has affect when `showSeekBackward = true`.",
+          "complexTypes": [],
+          "type": "number | undefined"
+        },
+        {
+          "name": "seekForwardTime",
+          "tags": [
+            {
+              "text": "5",
+              "name": "default"
+            },
+            {
+              "text": "2.3.0",
+              "name": "since"
+            }
+          ],
+          "docs": "Time to seek forward in seconds on the OS's notification.\nOnly has affect when `showSeekForward = true`.",
+          "complexTypes": [],
+          "type": "number | undefined"
+        },
+        {
           "name": "metadataUpdateUrl",
           "tags": [
             {
