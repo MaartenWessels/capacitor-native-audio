@@ -3,8 +3,6 @@ import Capacitor
 import MediaPlayer
 
 public class AudioSource: NSObject, AVAudioPlayerDelegate {
-    let STANDARD_SEEK_IN_SECONDS: Int = 5
-
     var id: String
     var source: String
     var audioMetadata: AudioMetadata
@@ -26,6 +24,8 @@ public class AudioSource: NSObject, AVAudioPlayerDelegate {
     private var isPaused: Bool = false
     private var showSeekBackward: Bool
     private var showSeekForward: Bool
+    private var seekBackwardTime: Int
+    private var seekForwardTime: Int
 
     private var audioReadyObservation: NSKeyValueObservation?
     private var audioOnEndObservation: Any?
@@ -44,7 +44,9 @@ public class AudioSource: NSObject, AVAudioPlayerDelegate {
         isBackgroundMusic: Bool,
         loopAudio: Bool,
         showSeekBackward: Bool,
-        showSeekForward: Bool
+        showSeekForward: Bool,
+        seekBackwardTime: Int,
+        seekForwardTime: Int
     ) {
         self.pluginOwner = pluginOwner
         self.id = id
@@ -55,6 +57,8 @@ public class AudioSource: NSObject, AVAudioPlayerDelegate {
         self.loopAudio = loopAudio
         self.showSeekBackward = showSeekBackward
         self.showSeekForward = showSeekForward
+        self.seekBackwardTime = seekBackwardTime
+        self.seekForwardTime = seekForwardTime
 
         super.init()
 
@@ -508,7 +512,7 @@ public class AudioSource: NSObject, AVAudioPlayerDelegate {
                 [unowned self] _ -> MPRemoteCommandHandlerStatus in
                 var seekTime = floor(
                     self.getCurrentTime()
-                        - Double(self.STANDARD_SEEK_IN_SECONDS)
+                        - Double(self.seekBackwardTime)
                 )
 
                 if seekTime < 0 {
@@ -521,7 +525,7 @@ public class AudioSource: NSObject, AVAudioPlayerDelegate {
             }
 
             commandCenter.skipBackwardCommand.preferredIntervals = [
-                NSNumber.init(value: self.STANDARD_SEEK_IN_SECONDS)
+                NSNumber.init(value: self.seekBackwardTime)
             ]
         }
 
@@ -530,7 +534,7 @@ public class AudioSource: NSObject, AVAudioPlayerDelegate {
                 [unowned self] _ -> MPRemoteCommandHandlerStatus in
                 var seekTime = ceil(
                     self.getCurrentTime()
-                        + Double(self.STANDARD_SEEK_IN_SECONDS)
+                        + Double(self.seekForwardTime)
                 )
                 var duration = floor(self.getDuration())
 
@@ -546,7 +550,7 @@ public class AudioSource: NSObject, AVAudioPlayerDelegate {
             }
 
             commandCenter.skipForwardCommand.preferredIntervals = [
-                NSNumber.init(value: self.STANDARD_SEEK_IN_SECONDS)
+                NSNumber.init(value: self.seekForwardTime)
             ]
         }
 
