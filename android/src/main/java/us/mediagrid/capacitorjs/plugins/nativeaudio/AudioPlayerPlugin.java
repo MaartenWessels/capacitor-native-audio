@@ -714,7 +714,9 @@ public class AudioPlayerPlugin extends Plugin {
     }
 
     private Context getContextForAudioService() {
-        return this.getActivity();
+        // Prefer application context to decouple from Activity lifecycle
+        Context appContext = getContext().getApplicationContext();
+        return appContext != null ? appContext : getContext();
     }
 
     private void createNotificationChannel() {
